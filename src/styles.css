@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar,
+body *::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+  background-color: rgba(145, 158, 171, 0.24);
+}
+
+body::-webkit-scrollbar-thumb,
+body ::-webkit-scrollbar-thumb {
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(99, 115, 129, 0.48);
+}
+
+body {
+  font-family: "Be Vietnam", sans-serif !important;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 120px 3% 5% 280px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    padding: 100px 2% 5% 2%;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .App {
+    padding: 100px 2% 5% 2%;
+  }
+}
