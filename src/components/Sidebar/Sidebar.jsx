@@ -17,7 +17,6 @@ import { Typography } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 
 // Material-UI Icons
-import NotificationImportantIcon from "@material-ui/icons/NotificationImportant";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
@@ -25,6 +24,7 @@ import DeveloperBoardIcon from "@material-ui/icons/DeveloperBoard";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import SpeedSharpIcon from "@material-ui/icons/SpeedSharp";
 import TableChartIcon from "@material-ui/icons/TableChart";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 // Inner Source
 import { styles } from "./styles.js";
@@ -46,19 +46,23 @@ function Sidebar(props) {
   // const [mailOpen, setMailOpen] = React.useState(false);
   const [tableOpen, setTableOpen] = React.useState(false);
   const [userOpen, setUserOpen] = React.useState(false);
-  const [DeviceOpen, setDeviceOpen] = React.useState(false);
+  const [deviceOpen, setDeviceOpen] = React.useState(false);
+  const [notificationOpen, setNotificationOpen] = React.useState(false);
+  const [mailOpen, setMailOpen] = React.useState(false);
 
   const handleClick = (name) => {
     name === "dashboard"
       ? setDashboardOpen(!dashboardOpen)
       : name === "user"
       ? setUserOpen(!userOpen)
+      : name === "notification"
+      ? setNotificationOpen(!notificationOpen)
       : name === "table"
       ? setTableOpen(!tableOpen)
-      : // : name === "mail"
-      // ? setMailOpen(!mailOpen)
-      name === "device"
-      ? setDeviceOpen(!DeviceOpen)
+      : name === "mail"
+      ? setMailOpen(!mailOpen)
+      : name === "device"
+      ? setDeviceOpen(!deviceOpen)
       : console.log("not found");
   };
 
@@ -238,7 +242,7 @@ function Sidebar(props) {
                 />
               </ListItem>
             </Link>
-            <Link to="/User/Setting">
+            {/* <Link to="/User/Setting">
               <ListItem
                 button
                 selected={selectedIndex === "Setting"}
@@ -264,17 +268,23 @@ function Sidebar(props) {
                   primary="პარამეტრები"
                 />
               </ListItem>
-            </Link>
+            </Link> */}
           </List>
         </Collapse>
         <ListItem
           button
-          selected={selectedIndex === "Users"}
+          selected={
+            selectedIndex === "Admin" ||
+            selectedIndex === "Customers" ||
+            selectedIndex === "Contacts"
+          }
           onClick={() => handleClick("table")}
         >
           <ListItemIcon
             className={
-              selectedIndex === "Users"
+              selectedIndex === "Admin" ||
+              selectedIndex === "Customers" ||
+              selectedIndex === "Contacts"
                 ? classes.activeListIcon
                 : classes.listIcon
             }
@@ -282,9 +292,11 @@ function Sidebar(props) {
             <TableChartIcon />
           </ListItemIcon>
           <ListItemText
-            primary="თანამშრომლები"
+            primary="ცხრილები"
             className={
-              selectedIndex === "Users"
+              selectedIndex === "Admin" ||
+              selectedIndex === "Customers" ||
+              selectedIndex === "Contacts"
                 ? classes.activeListText
                 : classes.listText
             }
@@ -293,19 +305,19 @@ function Sidebar(props) {
         </ListItem>
         <Collapse in={tableOpen} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <Link to="/Table/Users">
+            <Link to="/Table/Admin">
               <ListItem
                 button
-                selected={selectedIndex === "Users"}
+                selected={selectedIndex === "Admin"}
                 className={clsx(
-                  selectedIndex === "Users" && classes.activeItem,
+                  selectedIndex === "Admin" && classes.activeItem,
                   classes.childList
                 )}
-                onClick={(event) => handleListItemClick(event, "Users")}
+                onClick={(event) => handleListItemClick(event, "Admin")}
               >
                 <ListItemIcon
                   className={clsx(
-                    selectedIndex === "Users" && classes.activeChildListIcon,
+                    selectedIndex === "Admin" && classes.activeChildListIcon,
                     classes.childListIcon
                   )}
                 >
@@ -313,10 +325,65 @@ function Sidebar(props) {
                 </ListItemIcon>
                 <ListItemText
                   className={clsx(
-                    selectedIndex === "Users" && classes.activeChildList,
+                    selectedIndex === "Admin" && classes.activeChildList,
                     classes.childList
                   )}
-                  primary="ცხრილი"
+                  primary="ადმინისტრატორი"
+                />
+              </ListItem>
+            </Link>
+            <Link to="/Table/Customers">
+              <ListItem
+                button
+                selected={selectedIndex === "Customers"}
+                className={clsx(
+                  selectedIndex === "Customers" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "Customers")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "Customers" &&
+                      classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "Customers" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="მომხმარებლები"
+                />
+              </ListItem>
+            </Link>
+            <Link to="/Table/Contacts">
+              <ListItem
+                button
+                selected={selectedIndex === "Contacts"}
+                className={clsx(
+                  selectedIndex === "Contacts" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "Contacts")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "Contacts" && classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "Contacts" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="კონტაქტები"
                 />
               </ListItem>
             </Link>
@@ -324,41 +391,101 @@ function Sidebar(props) {
         </Collapse>
         <ListItem className={classes.listSectionHeader}>
           <Typography variant="subtitle2" gutterBottom>
-            მოწყობილობები
+            შეტყობინებები
           </Typography>
         </ListItem>
-        <Link to="/Notification/all">
-          <ListItem
-            button
-            selected={selectedIndex === "notification"}
-            onClick={(event) => handleListItemClick(event, "notification")}
+        <ListItem
+          button
+          selected={selectedIndex === "Alerts" || selectedIndex === "AlertLogs"}
+          onClick={() => handleClick("notification")}
+        >
+          <ListItemIcon
+            className={
+              selectedIndex === "Alerts" || selectedIndex === "AlertLogs"
+                ? classes.activeListIcon
+                : classes.listIcon
+            }
           >
-            <ListItemIcon
-              className={
-                selectedIndex === "notification"
-                  ? classes.activeListIcon
-                  : classes.listIcon
-              }
-            >
-              <NotificationImportantIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="შეტყობინებები"
-              className={
-                selectedIndex === "notification"
-                  ? classes.activeListText
-                  : classes.listText
-              }
-            />
-          </ListItem>
-        </Link>
-
+            <ErrorOutlineIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="გაფრთხილება"
+            className={
+              selectedIndex === "Alerts" || selectedIndex === "AlertLogs"
+                ? classes.activeListText
+                : classes.listText
+            }
+          />
+          {notificationOpen ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={notificationOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/Notification/Alerts">
+              <ListItem
+                button
+                selected={selectedIndex === "Alerts"}
+                className={clsx(
+                  selectedIndex === "Alerts" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "Alerts")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "Alerts" && classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "Alerts" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="ალერტები"
+                />
+              </ListItem>
+            </Link>
+          </List>
+          <List component="div" disablePadding>
+            <Link to="/Notification/AlertLogs">
+              <ListItem
+                button
+                selected={selectedIndex === "AlertLogs"}
+                className={clsx(
+                  selectedIndex === "AlertLogs" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "AlertLogs")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "AlertLogs" &&
+                      classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "AlertLogs" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="ალერტების ლოგები"
+                />
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
         <ListItem
           button
           selected={
             selectedIndex === "Device" ||
             selectedIndex === "Gateway" ||
-            selectedIndex === "Schedule"
+            selectedIndex === "Schedule" ||
+            selectedIndex === "DeviceGroup"
           }
           onClick={() => handleClick("device")}
         >
@@ -366,7 +493,8 @@ function Sidebar(props) {
             className={
               selectedIndex === "Device" ||
               selectedIndex === "Gateway" ||
-              selectedIndex === "Schedule"
+              selectedIndex === "Schedule" ||
+              selectedIndex === "DeviceGroup"
                 ? classes.activeListIcon
                 : classes.listIcon
             }
@@ -378,14 +506,15 @@ function Sidebar(props) {
             className={
               selectedIndex === "Device" ||
               selectedIndex === "Gateway" ||
-              selectedIndex === "Schedule"
+              selectedIndex === "Schedule" ||
+              selectedIndex === "DeviceGroup"
                 ? classes.activeListText
                 : classes.listText
             }
           />
-          {DeviceOpen ? <ExpandLess /> : <ExpandMore />}
+          {deviceOpen ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
-        <Collapse in={DeviceOpen} timeout="auto" unmountOnExit>
+        <Collapse in={deviceOpen} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <Link to="/Device/Gateway">
               <ListItem
@@ -465,23 +594,24 @@ function Sidebar(props) {
                     selectedIndex === "Device" && classes.activeChildList,
                     classes.childList
                   )}
-                  primary="მექანიზმები"
+                  primary="მოწყობილობები"
                 />
               </ListItem>
             </Link>
-            <Link to="/Device/DeviceGroups">
+            <Link to="/Device/DeviceGroup">
               <ListItem
                 button
-                selected={selectedIndex === "Schedule"}
+                selected={selectedIndex === "DeviceGroup"}
                 className={clsx(
-                  selectedIndex === "Schedule" && classes.activeItem,
+                  selectedIndex === "DeviceGroup" && classes.activeItem,
                   classes.childList
                 )}
-                onClick={(event) => handleListItemClick(event, "Schedule")}
+                onClick={(event) => handleListItemClick(event, "DeviceGroup")}
               >
                 <ListItemIcon
                   className={clsx(
-                    selectedIndex === "Schedule" && classes.activeChildListIcon,
+                    selectedIndex === "DeviceGroup" &&
+                      classes.activeChildListIcon,
                     classes.childListIcon
                   )}
                 >
@@ -489,10 +619,10 @@ function Sidebar(props) {
                 </ListItemIcon>
                 <ListItemText
                   className={clsx(
-                    selectedIndex === "Schedule" && classes.activeChildList,
+                    selectedIndex === "DeviceGroup" && classes.activeChildList,
                     classes.childList
                   )}
-                  primary="მექანიზმის განრიგი"
+                  primary="მოწყობილობის ჯგუფები"
                 />
               </ListItem>
             </Link>
@@ -519,7 +649,95 @@ function Sidebar(props) {
                     selectedIndex === "Schedule" && classes.activeChildList,
                     classes.childList
                   )}
-                  primary="მექანიზმის განრიგი"
+                  primary="მოწყობილობის განრიგი"
+                />
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
+        <ListItem
+          button
+          selected={
+            selectedIndex === "MailTemplate" || selectedIndex === "MailHistory"
+          }
+          onClick={() => handleClick("mail")}
+        >
+          <ListItemIcon
+            className={
+              selectedIndex === "MailTemplate" ||
+              selectedIndex === "MailHistory"
+                ? classes.activeListIcon
+                : classes.listIcon
+            }
+          >
+            <ErrorOutlineIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="შეტყობინებები"
+            className={
+              selectedIndex === "MailTemplate" ||
+              selectedIndex === "MailHistory"
+                ? classes.activeListText
+                : classes.listText
+            }
+          />
+          {mailOpen ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={mailOpen} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <Link to="/Mail/MailTemplate">
+              <ListItem
+                button
+                selected={selectedIndex === "MailTemplate"}
+                className={clsx(
+                  selectedIndex === "MailTemplate" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "MailTemplate")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "MailTemplate" &&
+                      classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "MailTemplate" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="შაბლონები"
+                />
+              </ListItem>
+            </Link>
+            <Link to="/Mail/MailHistory">
+              <ListItem
+                button
+                selected={selectedIndex === "MailHistory"}
+                className={clsx(
+                  selectedIndex === "MailHistory" && classes.activeItem,
+                  classes.childList
+                )}
+                onClick={(event) => handleListItemClick(event, "MailHistory")}
+              >
+                <ListItemIcon
+                  className={clsx(
+                    selectedIndex === "MailHistory" &&
+                      classes.activeChildListIcon,
+                    classes.childListIcon
+                  )}
+                >
+                  <FiberManualRecordIcon />
+                </ListItemIcon>
+                <ListItemText
+                  className={clsx(
+                    selectedIndex === "MailHistory" && classes.activeChildList,
+                    classes.childList
+                  )}
+                  primary="ისტორია"
                 />
               </ListItem>
             </Link>

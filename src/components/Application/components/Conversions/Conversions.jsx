@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import { withStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import { Circle } from "rc-progress";
-import EmailIcon from "@material-ui/icons/Email";
+import StoreIcon from "@material-ui/icons/Store";
 import PersonIcon from "@material-ui/icons/Person";
 import { styles } from "./styles";
 
@@ -45,7 +45,7 @@ class Conversions extends Component {
                     <Typography variant="h6" gutterBottom>
                       38,566
                     </Typography>
-                    <Typography variant="body2">Conversion</Typography>
+                    <Typography variant="body2">ინდ. მეწარმეები</Typography>
                   </div>
                   <div className={classes.icon}>
                     <PersonIcon />
@@ -79,10 +79,10 @@ class Conversions extends Component {
                     <Typography variant="h6" gutterBottom>
                       38,566
                     </Typography>
-                    <Typography variant="body2">Conversion</Typography>
+                    <Typography variant="body2">კომპანიები</Typography>
                   </div>
                   <div className={classes.icon}>
-                    <EmailIcon />
+                    <StoreIcon />
                   </div>
                 </div>
               </Paper>

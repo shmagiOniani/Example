@@ -17,15 +17,15 @@ class ChartRow extends Component {
       <>
         <Grid item xs={12} md={4}>
           <Paper className={classes.chartpaper} elevation={4}>
-            <Typography variant="h6">Current Download</Typography>
+            <Typography variant="h6">კომპანიების კატეგორიები</Typography>
             <CircleChart />
           </Paper>
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper className={classes.chartpaper} elevation={4}>
-            <Typography variant="h6">Area Installed</Typography>
+            <Typography variant="h6">მომხმარებელთა რაოდენობა</Typography>
             <Typography variant="overline" display="block" gutterBottom>
-              (+43%) than last year
+              (+43%) ვიდრე გასულ წელს
             </Typography>
             <LinedChart />
           </Paper>

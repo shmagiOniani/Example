@@ -124,14 +124,14 @@ class General extends Component {
                   className={this.props.classes.large}
                 />
               </Grid>
-              <Grid item>
+              {/* <Grid item>
                 <form onSubmit={this.fileUploadHandler}>
                   <input type="file" onChange={this.fileSelectedHandler} />
                   <button type="submit" name="submit">
                     ატვირთვა
                   </button>
                 </form>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Typography
                   variant="body2"
@@ -204,7 +204,7 @@ class General extends Component {
                 variant="contained"
                 className={this.props.classes.updateButton}
               >
-                Save Changes
+                ინფორმაციის განახლება
               </Button>
             </Grid>
           </Paper>

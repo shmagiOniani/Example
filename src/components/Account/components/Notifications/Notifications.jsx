@@ -84,10 +84,10 @@ class Notifications extends Component {
         <Grid item xs={12}>
           <Paper className={this.props.classes.paper} elevation={3}>
             <FormGroup className={this.props.classes.form}>
-              <Typography variant="overline">ACTIVITY</Typography>
+              <Typography variant="h6">სხვა აქტივობები</Typography>
               <FormControlLabel
                 label="
-                Email me when someone comments onmy article"
+                ნებართვა შეტყობინებაზე 1"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.comments,
                 })}
@@ -105,7 +105,7 @@ class Notifications extends Component {
                 }
               />
               <FormControlLabel
-                label="Email me when someone answers on my form"
+                label="ნებართვა შეტყობინებაზე 2"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.answers,
                 })}
@@ -124,7 +124,7 @@ class Notifications extends Component {
               />
               <FormControlLabel
                 label="
-                Email me hen someone follows me"
+                ნებართვა შეტყობინებაზე 3"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.follows,
                 })}
@@ -141,9 +141,9 @@ class Notifications extends Component {
                   />
                 }
               />
-              <Typography variant="overline">APPLICATION</Typography>
+              <Typography variant="h6">აპლიკაცია</Typography>
               <FormControlLabel
-                label=" News and announcements"
+                label=" ნებართვა შეტყობინებაზე 4"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.news,
                 })}
@@ -161,7 +161,7 @@ class Notifications extends Component {
                 }
               />
               <FormControlLabel
-                label="Weekly product updates"
+                label="ნებართვა შეტყობინებაზე 5"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.updates,
                 })}
@@ -179,7 +179,7 @@ class Notifications extends Component {
                 }
               />
               <FormControlLabel
-                label="Weekly blog digest"
+                label="ნებართვა შეტყობინებაზე 6"
                 className={clsx(this.props.classes.label, {
                   [this.props.classes.activeLabel]: this.state.blogs,
                 })}
@@ -197,7 +197,7 @@ class Notifications extends Component {
                 }
               />
               <Button className={this.props.classes.updateButton}>
-                Save Changes
+                ცვლილების შენახვა
               </Button>
             </FormGroup>
           </Paper>

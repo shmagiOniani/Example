@@ -20,7 +20,7 @@ class Totals extends Component {
         <Grid item xs={12} md={4}>
           <Paper className={classes.paper} elevation={4}>
             <div className={classes.info}>
-              <h2>Total Active Users</h2>
+              <h2> მოწყობილობები</h2>
               <div className={classes.profit}>
                 <TrendingUpIcon />
                 <span>+2.6%</span>
@@ -35,7 +35,7 @@ class Totals extends Component {
         <Grid item xs={12} md={4}>
           <Paper className={classes.paper} elevation={4}>
             <div className={classes.info}>
-              <h2>Total Installed</h2>
+              <h2>სულ მომხმარებლები</h2>
               <div className={classes.profit}>
                 <TrendingUpIcon />
                 <span>+0.2%</span>
@@ -50,7 +50,7 @@ class Totals extends Component {
         <Grid item xs={12} md={4}>
           <Paper className={classes.paper} elevation={4}>
             <div className={classes.info}>
-              <h2>Total Downloads</h2>
+              <h2>სულ კომპანია</h2>
               <div className={`${classes.profit} ${classes.loose}`}>
                 <TrendingDownIcon />
                 <span>-0.1%</span>

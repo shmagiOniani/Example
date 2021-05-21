@@ -11,45 +11,45 @@ import {
 
 const data = [
   {
-    name: "Jan",
-    uv: 0,
-    pv: 0,
+    name: "იან",
+    მიმდინარე: 0,
+    გასული: 0,
     amt: 2400,
   },
   {
-    name: "Feb",
-    uv: 3000,
-    pv: 1398,
+    name: "თებ",
+    მიმდინარე: 3000,
+    გასული: 1398,
     amt: 2210,
   },
   {
-    name: "Mar",
-    uv: 2000,
-    pv: 9800,
+    name: "მარ",
+    მიმდინარე: 2000,
+    გასული: 9800,
     amt: 2290,
   },
   {
-    name: "Apr",
-    uv: 2780,
-    pv: 3908,
+    name: "აპრ",
+    მიმდინარე: 2780,
+    გასული: 3908,
     amt: 2000,
   },
   {
-    name: "May",
-    uv: 1890,
-    pv: 4800,
+    name: "მაი",
+    მიმდინარე: 1890,
+    გასული: 4800,
     amt: 2181,
   },
   {
-    name: "Jun",
-    uv: 2390,
-    pv: 3800,
+    name: "ივნ",
+    მიმდინარე: 2390,
+    გასული: 3800,
     amt: 2500,
   },
   {
-    name: "Jul",
-    uv: 3490,
-    pv: 4300,
+    name: "ივლ",
+    მიმდინარე: 3490,
+    გასული: 4300,
     amt: 2100,
   },
 ];
@@ -77,14 +77,14 @@ export default class LinedChart extends PureComponent {
           <Line
             strokeWidth={3}
             type="monotone"
-            dataKey="pv"
+            dataKey="გასული"
             stroke="rgb(255, 193, 7)"
             activeDot={{ r: 8 }}
           />
           <Line
             strokeWidth={3}
             type="monotone"
-            dataKey="uv"
+            dataKey="მიმდინარე"
             stroke="rgb(0, 171, 85)"
           />
         </LineChart>

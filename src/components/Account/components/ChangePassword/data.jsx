@@ -5,7 +5,7 @@ export const data = [
     inputType: "password",
     userId: "Old Password",
     userName: "Old Password",
-    userLabel: "Old Password",
+    userLabel: "ძველი პაროლი",
   },
   {
     xs: 12,
@@ -13,7 +13,7 @@ export const data = [
     inputType: "password",
     userId: "New Password",
     userName: "New Password",
-    userLabel: "New Password",
+    userLabel: "ახალი პაროლი",
   },
   {
     xs: 12,
@@ -21,6 +21,6 @@ export const data = [
     inputType: "password",
     userId: "Confirm New Password",
     userName: "Confirm New Password",
-    userLabel: "Confirm New Password",
+    userLabel: "პაროლის დადასტურება",
   },
 ];

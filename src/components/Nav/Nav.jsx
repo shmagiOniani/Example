@@ -1,12 +1,12 @@
 import React from "react";
 import Sidebar from "../Sidebar/Sidebar";
 import { styles } from "./styles";
-import { languages } from "./languages";
+// import { languages } from "./languages";
 import { notification } from "./notification";
 import { useHistory } from "react-router-dom";
 // Images
 import person from "../../assets/img/1.jpg";
-import english from "../../assets/img/united-kingdom.png";
+// import english from "../../assets/img/united-kingdom.png";
 // import france from "../../assets/img/france.png";
 // import german from "../../assets/img/germany.png";
 // Material-UI Core tags
@@ -29,6 +29,7 @@ import NotificationsIcon from "@material-ui/icons/Notifications";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import SettingsIcon from "@material-ui/icons/Settings";
+import MeetingRoomIcon from "@material-ui/icons/MeetingRoom";
 // import context
 
 function Nav() {
@@ -62,28 +63,28 @@ function Nav() {
 
   // Message pop-up handler
 
-  const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
-  const isLanguageOpen = Boolean(languageAnchorEl);
+  // const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
+  // const isLanguageOpen = Boolean(languageAnchorEl);
 
-  const handleMessageOpen = (event) => {
-    setLanguageAnchorEl(event.currentTarget);
-  };
+  // const handleMessageOpen = (event) => {
+  //   setLanguageAnchorEl(event.currentTarget);
+  // };
 
-  const handleMessageClose = () => {
-    setLanguageAnchorEl(null);
-  };
+  // const handleLanguageClose = () => {
+  //   setLanguageAnchorEl(null);
+  // };
 
-  const [languageIcon, setLanguageIcon] = React.useState(english);
-  const [localLan, setLocalLan] = React.useState(english);
+  // const [languageIcon, setLanguageIcon] = React.useState(english);
+  // const [localLan, setLocalLan] = React.useState(english);
 
-  const handleLanguage = (name) => {
-    setLocalLan(window.localStorage.setItem("language", name));
-  };
-  const handleLanguageIcon = (image, name) => {
-    setLanguageIcon(image);
-    handleLanguage(name);
-    setLanguageAnchorEl(null);
-  };
+  // const handleLanguage = (name) => {
+  //   setLocalLan(window.localStorage.setItem("language", name));
+  // };
+  // const handleLanguageIcon = (image, name) => {
+  //   setLanguageIcon(image);
+  //   handleLanguage(name);
+  //   setLanguageAnchorEl(null);
+  // };
 
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
@@ -133,37 +134,37 @@ function Nav() {
     </Menu>
   );
 
-  // Message pop-up
-  const messageId = "primary-Message-pop-up";
-  const renderMessage = (
-    <Menu
-      anchorEl={languageAnchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={messageId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isLanguageOpen}
-      onClose={handleMessageClose}
-      className={classes.popUp}
-    >
-      <div>
-        {languages.map((index) => (
-          <MenuItem
-            onClick={() => handleLanguageIcon(index.image, index.name)}
-            key={index.id}
-            className={classes.languageItem}
-          >
-            <Avatar
-              variant="rounded"
-              src={index.image}
-              className={classes.languageList}
-            />
-            <div>{index.name}</div>
-          </MenuItem>
-        ))}
-      </div>
-    </Menu>
-  );
+  // ლანგუაგე pop-up
+  // const languageId = "primary-language-pop-up";
+  // const renderLanguage = (
+  //   <Menu
+  //     anchorEl={languageAnchorEl}
+  //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
+  //     id={languageId}
+  //     keepMounted
+  //     transformOrigin={{ vertical: "top", horizontal: "right" }}
+  //     open={isLanguageOpen}
+  //     onClose={handleLanguageClose}
+  //     className={classes.popUp}
+  //   >
+  //     <div>
+  //       {languages.map((index) => (
+  //         <MenuItem
+  //           onClick={() => handleLanguageIcon(index.image, index.name)}
+  //           key={index.id}
+  //           className={classes.languageItem}
+  //         >
+  //           <Avatar
+  //             variant="rounded"
+  //             src={index.image}
+  //             className={classes.languageList}
+  //           />
+  //           <div>{index.name}</div>
+  //         </MenuItem>
+  //       ))}
+  //     </div>
+  //   </Menu>
+  // );
 
   // avatar pop-up for desktop
   const menuId = "primary-search-account-menu";
@@ -191,7 +192,12 @@ function Nav() {
         პარამეტრები
       </MenuItem>
 
-      <MenuItem onClick={logButton}>გამოსვლა</MenuItem>
+      <MenuItem onClick={logButton}>
+        <Box mr={2}>
+          <MeetingRoomIcon />
+        </Box>
+        გამოსვლა
+      </MenuItem>
     </Menu>
   );
 
@@ -246,7 +252,7 @@ function Nav() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton
+            {/* <IconButton
               color="inherit"
               aria-controls={messageId}
               aria-haspopup="true"
@@ -257,7 +263,7 @@ function Nav() {
                 src={languageIcon}
                 className={classes.languageIcon}
               />
-            </IconButton>
+            </IconButton> */}
             <IconButton
               aria-label="show new notifications"
               color="inherit"
@@ -297,7 +303,7 @@ function Nav() {
       {/* {renderMobileMenu} */}
       {renderMenu}
       {renderNotification}
-      {renderMessage}
+      {/* {renderLanguage} */}
     </div>
   );
 }

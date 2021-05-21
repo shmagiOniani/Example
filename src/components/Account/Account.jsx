@@ -11,7 +11,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import ReceiptIcon from "@material-ui/icons/Receipt";
 import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import ShareIcon from "@material-ui/icons/Share";

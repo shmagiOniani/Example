@@ -24,18 +24,18 @@ body {
 .App {
   font-family: sans-serif;
   text-align: center;
-  padding: 120px 3% 5% 280px;
-  overflow: hidden;
+  padding: 80px 3% 5% 280px;
+  /* overflow: hidden; */
 }
 
 @media only screen and (max-width: 600px) {
   .App {
-    padding: 100px 2% 5% 2%;
+    padding: 80px 2% 5% 2%;
   }
 }
 
 @media only screen and (max-width: 1280px) {
   .App {
-    padding: 100px 2% 5% 2%;
+    padding: 80px 2% 5% 2%;
   }
 }

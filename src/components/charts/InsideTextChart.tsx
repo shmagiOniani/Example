@@ -2,12 +2,12 @@ import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 
 const data = [
-  { name: "New", value: 15 },
-  { name: "Connected", value: 4 },
-  { name: "Disconnected", value: 3 },
-  { name: "Crashed", value: 3 },
-  { name: "Undefinde", value: 7 },
-  { name: "Deleted", value: 2 }
+  { name: "ახალი", value: 15 },
+  { name: "დაკავშირებული", value: 4 },
+  { name: "გამორთული", value: 3 },
+  { name: "დაზიანებული", value: 3 },
+  { name: "განუსაზღვრელი", value: 7 },
+  { name: "წაშლილი", value: 2 }
 ];
  
 
